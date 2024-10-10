@@ -3,10 +3,6 @@ package U2T7_P3_WritingMethodsWithStrings;
 
 public class CustomStringMethods {
 
-    /* this class has no instance variables */
-  
-    /* Constructor with no parameters, and since there are no instance variables to initialize,
-              the constructor body is "empty" */
     public CustomStringMethods() {}
 
     public boolean longerThan(String myString, int maxLength) {
@@ -18,7 +14,6 @@ public class CustomStringMethods {
             return false;
         }
     }
-  
 
     public String funnyString(String str, int idx) {
         String newLetter = str.substring(idx, idx + 1);
@@ -26,13 +21,6 @@ public class CustomStringMethods {
         return newString;
     }
   
-    /**Client provides myString and the method returns a String that represents mystring
-              with its halves reversed; strings of odd length should have the extra character be a part
-              of the second half when initially halved (and appear in the first half in the returned String).
-  
-              Example:  If myString is computers, this method should return the string uterscomp
-              Example:  If myString is "reverse me!", this method should return "e me!revers"; 
-    */
     public String halvesReversed(String myString) {
         int length = myString.length();
 
@@ -44,5 +32,61 @@ public class CustomStringMethods {
         return half2 + half1;
 
     }
-  }
+
+    public String pigLatin (String orig) {
+        String firstLetter = orig.substring (0,1);
+        String pigLatin = "ay";
+
+        return (orig.substring(1) + firstLetter + pigLatin);
+    }
+
+    public String removeCharacter (String myString, int removeIdx) {
+        int length = myString.length();
+        String newString = myString;
+
+        if (length >= removeIdx && removeIdx < length) { 
+            String half1 = myString.substring(0, removeIdx);
+            String half2 = myString.substring(removeIdx + 1);
+
+            newString = half1 + half2;
+        } 
+
+        return newString;
+    }
+
+    public String insertAt(String orig, String insertText, String searchStr) {
+        int insertIdx = orig.indexOf(searchStr);
+        String string = " ";
+
+        if (insertIdx != -1) {
+            string = orig.substring(0, insertIdx) + insertText + orig.substring(insertIdx);
+        } else {
+            string = orig + insertText;
+        }
+        return string;
+    }
+
+    public String endUp(String myString, int numToCap){
+        int length = myString.length();
+
+        if(numToCap >= length) {
+            return myString.toUpperCase();
+        }
+
+        String half1 = myString.substring(0, length - numToCap);
+        String half2 = myString.substring(length - numToCap);
+
+        return half1 + half2.toUpperCase();
+    }
   
+    
+    public String yellOrWhisper(String myString) {
+        String firstLetter = myString.substring(0, 1);
+
+        if (firstLetter == firstLetter.toUpperCase()){
+            return myString.toUpperCase();
+        } else {
+            return myString.toLowerCase();
+        }
+    }
+  }
